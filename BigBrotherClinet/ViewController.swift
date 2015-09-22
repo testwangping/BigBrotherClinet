@@ -10,16 +10,22 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        let s = NSURLSession.sharedSession().dataTaskWithURL(NSURL(string: "http://lottery.sunmin.me/lottery")!, completionHandler: { (data, response, error) -> Void in
+            if error == nil {
+                let ss = NSString(data: data, encoding: NSUTF8StringEncoding)
+                println(ss)
+            }
+        })
+        s.resume()
+        
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
+    
+    
 }
 
