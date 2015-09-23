@@ -1,5 +1,4 @@
-platform :ios, "8.0"
-use_frameworks!
+pod 'Masonry'
 pod 'SDWebImage'
 pod 'MBProgressHUD'
 pod 'Aspects'

@@ -5,6 +5,7 @@ PODS:
   - FMDB/common (2.5)
   - FMDB/standard (2.5):
     - FMDB/common
+  - Masonry (0.6.3)
   - MBProgressHUD (0.9.1)
   - MJRefresh (2.4.10)
   - SDWebImage (3.7.3):
@@ -15,6 +16,7 @@ PODS:
 DEPENDENCIES:
   - Aspects
   - FMDB
+  - Masonry
   - MBProgressHUD
   - MJRefresh
   - SDWebImage
@@ -27,6 +29,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Aspects: 7595ba96a6727a58ebcbfc954497fc5d2fdde546
   FMDB: 96e8f1bcc1329e269330f99770ad4285d9003e52
+  Masonry: ff105a956abcd19a618b2028b121cb638d7a8e2f
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   MJRefresh: e52328552ed9cbfce3501e3820b18bf7643c65cc
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
