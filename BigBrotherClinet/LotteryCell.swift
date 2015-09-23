@@ -17,6 +17,7 @@ class LotteryCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.selectionStyle = .None
         
         for i in 0 ..< (redBallCount + blueBallCount) {
             let ballLabel = UILabel()
@@ -52,10 +53,10 @@ class LotteryCell: UITableViewCell {
     
 
     
-    func updateWithLottery(lottery : Array<String>) {
+    func updateWithLottery(lottery : Array<Int>) {
         assert(lottery.count == (redBallCount+blueBallCount), "彩票数字不对哦")
         for i in 0 ..< (redBallCount+blueBallCount) {
-            self.balls[i].text = lottery[i]
+            self.balls[i].text = String(format: "%d", lottery[i])
         }
     }
     

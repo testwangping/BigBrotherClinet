@@ -4,3 +4,4 @@
 
 #import "Masonry.h"
 #import "SMFoundation.h"
+#import "GPJAssistant.h"

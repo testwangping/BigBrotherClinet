@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		277BA03CD47D307DF54F48B7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A603AA534C7792C3264DCA52 /* libPods.a */; };
+		388167901BB2934C00C9AA87 /* GPJAssistant.m in Sources */ = {isa = PBXBuildFile; fileRef = 3881678F1BB2934C00C9AA87 /* GPJAssistant.m */; };
 		38F460BA1BB2419F006E663A /* LotteryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F460B91BB2419F006E663A /* LotteryCell.swift */; };
 		38FEC7881BB1354900322C4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FEC7871BB1354900322C4F /* AppDelegate.swift */; };
 		38FEC78A1BB1354900322C4F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38FEC7891BB1354900322C4F /* ViewController.swift */; };
@@ -28,6 +29,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		38815AEE1BB2932400C9AA87 /* GPJAssistant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPJAssistant.h; sourceTree = "<group>"; };
+		3881678F1BB2934C00C9AA87 /* GPJAssistant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPJAssistant.m; sourceTree = "<group>"; };
 		38F460B51BB23FB6006E663A /* BigBrotherClinet-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BigBrotherClinet-Bridging-Header.h"; sourceTree = "<group>"; };
 		38F460B91BB2419F006E663A /* LotteryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LotteryCell.swift; sourceTree = "<group>"; };
 		38FEC7821BB1354900322C4F /* BigBrotherClinet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BigBrotherClinet.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,6 +100,8 @@
 			children = (
 				38FEC7871BB1354900322C4F /* AppDelegate.swift */,
 				38FEC7891BB1354900322C4F /* ViewController.swift */,
+				38815AEE1BB2932400C9AA87 /* GPJAssistant.h */,
+				3881678F1BB2934C00C9AA87 /* GPJAssistant.m */,
 				38F460B91BB2419F006E663A /* LotteryCell.swift */,
 				38FEC78B1BB1354900322C4F /* Main.storyboard */,
 				38FEC78E1BB1354900322C4F /* Images.xcassets */,
@@ -276,6 +281,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				388167901BB2934C00C9AA87 /* GPJAssistant.m in Sources */,
 				38F460BA1BB2419F006E663A /* LotteryCell.swift in Sources */,
 				38FEC78A1BB1354900322C4F /* ViewController.swift in Sources */,
 				38FEC7881BB1354900322C4F /* AppDelegate.swift in Sources */,
@@ -421,6 +427,11 @@
 				INFOPLIST_FILE = BigBrotherClinet/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/BigBrotherClinet/BigBrotherServer/venv",
+					"$(PROJECT_DIR)/BigBrotherClinet/BigBrotherServer/venv/lib/python2.7/config",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "BigBrotherClinet/BigBrotherClinet-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -447,6 +458,11 @@
 				INFOPLIST_FILE = BigBrotherClinet/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/BigBrotherClinet/BigBrotherServer/venv",
+					"$(PROJECT_DIR)/BigBrotherClinet/BigBrotherServer/venv/lib/python2.7/config",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "BigBrotherClinet/BigBrotherClinet-Bridging-Header.h";
 			};

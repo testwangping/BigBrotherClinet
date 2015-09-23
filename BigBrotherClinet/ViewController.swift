@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UIViewController {
 
     private var tableView : UITableView?
-    private var lotteries = Array<Array<String>>()
+    private var lotteries = Array<Array<Int>>()
     private var getting = false
     
     
@@ -43,7 +43,6 @@ class ViewController: UIViewController {
             make.right.equalTo()(0)
             make.bottom.equalTo()(self.view)
         }
-//        tableView?.backgroundColor = UIColor.redColor()
         
     }
     
@@ -62,17 +61,20 @@ class ViewController: UIViewController {
     
     private func getLottery() {
         self.getting = true
-        let s = NSURLSession.sharedSession().dataTaskWithURL(NSURL(string: "http://lottery.sunmin.me/lottery")!, completionHandler: { (data, response, error) -> Void in
+        self.view.showWaitWithMessage("大仙作法中...")
+        let count = String(format: "%d", arc4random()%4+1)
+        let s = NSURLSession.sharedSession().dataTaskWithURL(NSURL(string: "http://lottery.sunmin.me/lottery?type=superlotto&algorithm=random&count=" + count)!, completionHandler: { (data, response, error) -> Void in
             self.getting = false
-            if error == nil {
-                let dic = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(0), error: nil) as? NSDictionary
-                if dic != nil {
-                    sm_dispatch_execute_in_main_queue_after(0.0, { () -> Void in
-                        self.lotteries = dic!.objectForKey("lottery_list") as! Array<Array<String>>
+            sm_dispatch_execute_in_main_queue_after(0.0, { () -> Void in
+                self.view.hideWait()
+                if error == nil {
+                    let dic = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(0), error: nil) as? NSDictionary
+                    if dic != nil {
+                        self.lotteries = dic!.objectForKey("lottery_list") as! Array<Array<Int>>
                         self.tableView!.reloadData()
-                    })
+                    }
                 }
-            }
+            })
         })
         s.resume()
     }
