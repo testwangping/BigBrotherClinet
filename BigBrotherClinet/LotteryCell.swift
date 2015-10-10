@@ -11,17 +11,16 @@ import UIKit
 class LotteryCell: UITableViewCell {
 
     var balls = Array<UILabel>()
-    let redBallCount = 5
-    let blueBallCount = 2
+    private let type : LotteryType
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        
+    init(style: UITableViewCellStyle, reuseIdentifier: String?, type : LotteryType) {
+        self.type = type
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .None
         
-        for i in 0 ..< (redBallCount + blueBallCount) {
+        for i in 0 ..< (type.redBallCount() + type.blueBallCount()) {
             let ballLabel = UILabel()
-            if i  < redBallCount {
+            if i >= type.blueBallCount() {
                 ballLabel.backgroundColor = UIColor.redColor()
             }
             else {
@@ -30,32 +29,29 @@ class LotteryCell: UITableViewCell {
             ballLabel.textColor = UIColor.whiteColor()
             ballLabel.textAlignment = .Center
             ballLabel.font = UIFont.systemFontOfSize(12)
-            ballLabel.layer.cornerRadius = 15
+            ballLabel.layer.cornerRadius = 18
             ballLabel.clipsToBounds = true
             self.contentView.addSubview(ballLabel)
-            ballLabel.mas_makeConstraints{ make in
-                make.left.equalTo()(30 + i * 40)
-                make.width.equalTo()(30)
-                make.centerY.equalTo()(self.contentView)
-                make.height.equalTo()(30)
+            ballLabel.snp_makeConstraints{ make in
+                make.left.equalTo(20 + i * 40)
+                make.width.equalTo(36)
+                make.centerY.equalTo(self.contentView)
+                make.height.equalTo(36)
             }
             balls.append(ballLabel)
         }
-        
-        
+
     }
     
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
 
     
     func updateWithLottery(lottery : Array<Int>) {
-        assert(lottery.count == (redBallCount+blueBallCount), "彩票数字不对哦")
-        for i in 0 ..< (redBallCount+blueBallCount) {
+        assert(lottery.count == (type.redBallCount()+type.blueBallCount()), "彩票数字不对哦")
+        for i in 0 ..< (type.redBallCount()+type.blueBallCount()) {
             self.balls[i].text = String(format: "%d", lottery[i])
         }
     }
@@ -63,5 +59,10 @@ class LotteryCell: UITableViewCell {
     
     class func cellReuseIdentifier() -> String {
         return "cell"
+    }
+    
+    
+    class func standardHeight() -> CGFloat {
+        return 60.0
     }
 }

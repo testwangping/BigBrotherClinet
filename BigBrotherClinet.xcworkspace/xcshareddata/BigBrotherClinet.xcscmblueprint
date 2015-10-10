@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "13058335928021572A5C7336E6453AE0542A7FA2",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "13058335928021572A5C7336E6453AE0542A7FA2" : 0,
+    "5901B1A15A5688DDAEBC55794442CFEBF9BBD430" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "A349A789-A227-445F-9D87-E284D91C7589",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "13058335928021572A5C7336E6453AE0542A7FA2" : "BigBrotherClient",
+    "5901B1A15A5688DDAEBC55794442CFEBF9BBD430" : "BigBrotherClient\/BigBrotherClinet\/BigBrotherServer"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "BigBrotherClinet",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "BigBrotherClinet.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/s6530085\/BigBrotherClinet.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "13058335928021572A5C7336E6453AE0542A7FA2"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/s6530085\/-BigBrotherServer.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "5901B1A15A5688DDAEBC55794442CFEBF9BBD430"
+    }
+  ]
+}
