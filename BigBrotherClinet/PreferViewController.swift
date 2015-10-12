@@ -11,13 +11,13 @@ import SMFoundation
 
 class PreferViewController: UIViewController {
     
-    private let blueBallTagIndex = 1000
-    private let redBallTagIndex = 2000
+    private let blueBallTagIndex = 2000
+    private let redBallTagIndex = 1000
     private let tagForBallLabel = 999
 
     private let type : LotteryType
-    private var preferBlues = [Int]()
     private var preferReds = [Int]()
+    private var preferBlues = [Int]()
     // 我本来也想不同尺寸显示不同的个数，但是如果出现未知尺寸我还是得改，那么还不如写死一个值
     private let oneLineBallCount = 7
 
@@ -117,14 +117,14 @@ class PreferViewController: UIViewController {
         
         self.view.backgroundColor = UIColor.whiteColor()
         
-        let blueBallsView = self.geneBallsView(isBlue:true)
-        blueBallsView.snp_updateConstraints { (make) -> Void in
+        let redBallsView = self.geneBallsView(isBlue:false)
+        redBallsView.snp_updateConstraints { (make) -> Void in
             make.top.equalTo(30)
         }
         
-        let redBallsView = self.geneBallsView(isBlue: false)
-        redBallsView.snp_updateConstraints { (make) -> Void in
-            make.top.equalTo(blueBallsView.snp_bottom).offset(30)
+        let blueBallsView = self.geneBallsView(isBlue: true)
+        blueBallsView.snp_updateConstraints { (make) -> Void in
+            make.top.equalTo(redBallsView.snp_bottom).offset(30)
         }
 
         let commitButton = UIButton()
@@ -140,7 +140,7 @@ class PreferViewController: UIViewController {
         commitButton.snp_makeConstraints { (make) -> Void in
             make.left.equalTo(30)
             make.right.equalTo(-30)
-            make.top.equalTo(redBallsView.snp_bottom).offset(20)
+            make.top.equalTo(blueBallsView.snp_bottom).offset(20)
             make.height.equalTo(44)
         }
         
@@ -153,31 +153,31 @@ class PreferViewController: UIViewController {
             gr.view!.userInteractionEnabled = true
         }
         let tag = gr.view!.tag
-        if tag > redBallTagIndex {
-            let index = tag - redBallTagIndex
-            if let ss = preferReds.indexOf(index) {
-                preferReds.removeAtIndex(ss)
-                gr.view?.viewWithTag(tagForBallLabel)?.backgroundColor = UIColor.whiteColor()
-            }
-            else {
-                // 目前这个其实不是真复式哦,下同
-                if preferReds.count < self.type.redBallCount() {
-                    preferReds.append(index)
-                    gr.view?.viewWithTag(tagForBallLabel)?.backgroundColor = UIColor.redColor()
-                }
-            }
-        }
-        else {
+        if tag > blueBallTagIndex {
             let index = tag - blueBallTagIndex
             if let ss = preferBlues.indexOf(index) {
                 preferBlues.removeAtIndex(ss)
                 gr.view?.viewWithTag(tagForBallLabel)?.backgroundColor = UIColor.whiteColor()
             }
-            
             else {
+                // 目前这个其实不是真复式哦,下同
                 if preferBlues.count < self.type.blueBallCount() {
                     preferBlues.append(index)
                     gr.view?.viewWithTag(tagForBallLabel)?.backgroundColor = UIColor.blueColor()
+                }
+            }
+        }
+        else {
+            let index = tag - redBallTagIndex
+            if let ss = preferReds.indexOf(index) {
+                preferReds.removeAtIndex(ss)
+                gr.view?.viewWithTag(tagForBallLabel)?.backgroundColor = UIColor.whiteColor()
+            }
+            
+            else {
+                if preferReds.count < self.type.redBallCount() {
+                    preferReds.append(index)
+                    gr.view?.viewWithTag(tagForBallLabel)?.backgroundColor = UIColor.redColor()
                 }
             }
         }
@@ -196,7 +196,7 @@ class PreferViewController: UIViewController {
             return
         }
         
-        let c = ResultViewController(type: self.type, algorithm: .Prefer, count: 0, preferBlues: preferBlues, preferReds: preferReds)
+        let c = ResultViewController(type: self.type, algorithm: .Prefer, count: 0, preferReds: preferReds, preferBlues: preferBlues)
         self.navigationController?.pushViewController(c, animated: true)
     }
     

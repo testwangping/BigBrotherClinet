@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SMFoundation
 
 class LotteryCell: UITableViewCell {
 
@@ -18,25 +19,30 @@ class LotteryCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .None
         
+        let cellWidthOuter = Int(kScreenWidth() / 8)
+        let cellWidthInner = Int(kScreenWidth() / 10)
         for i in 0 ..< (type.redBallCount() + type.blueBallCount()) {
             let ballLabel = UILabel()
-            if i >= type.blueBallCount() {
-                ballLabel.backgroundColor = UIColor.redColor()
+            ballLabel.layer.borderWidth = 1
+            ballLabel.textAlignment = .Center
+            ballLabel.font = UIFont.systemFontOfSize(14)
+            ballLabel.layer.cornerRadius = CGFloat(cellWidthInner)/2
+            ballLabel.clipsToBounds = true
+            if i >= type.redBallCount() {
+                ballLabel.layer.borderColor = UIColor.blueColor().CGColor
+                ballLabel.textColor = UIColor.blueColor()
             }
             else {
-                ballLabel.backgroundColor = UIColor.blueColor()
+                ballLabel.layer.borderColor = UIColor.redColor().CGColor
+                ballLabel.textColor = UIColor.redColor()
             }
-            ballLabel.textColor = UIColor.whiteColor()
-            ballLabel.textAlignment = .Center
-            ballLabel.font = UIFont.systemFontOfSize(12)
-            ballLabel.layer.cornerRadius = 18
-            ballLabel.clipsToBounds = true
+            
             self.contentView.addSubview(ballLabel)
             ballLabel.snp_makeConstraints{ make in
-                make.left.equalTo(20 + i * 40)
-                make.width.equalTo(36)
+                make.left.equalTo(20 + i * cellWidthOuter + (i >= type.redBallCount() ? 20 : 0))
+                make.width.equalTo(cellWidthInner)
                 make.centerY.equalTo(self.contentView)
-                make.height.equalTo(36)
+                make.height.equalTo(cellWidthInner)
             }
             balls.append(ballLabel)
         }

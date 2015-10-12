@@ -95,14 +95,14 @@ class MainViewController: UIViewController {
     
     
     func welfareLottoTapped(button : UIButton) {
-        let c = PreferViewController(type: .WelfareLotto)
+        let c = PreferViewController(type: .WelfareLottery)
         c.title = button.titleForState(.Normal)
         self.navigationController?.pushViewController(c, animated: true)
     }
     
     
     func luckyTapped(button : UIButton) {
-        let c = ResultViewController(type: self.todayIsSuperLottoDay() ? .SuperLotto : .WelfareLotto, algorithm: .Random, count: 0, preferBlues: [], preferReds: [])
+        let c = ResultViewController(type: self.todayIsSuperLottoDay() ? .SuperLotto : .WelfareLottery, algorithm: .Random, count: 0, preferReds: [], preferBlues: [])
         self.navigationController?.pushViewController(c, animated: true)
     }
     

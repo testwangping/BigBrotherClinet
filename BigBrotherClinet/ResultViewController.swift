@@ -15,21 +15,23 @@ class ResultViewController: UIViewController {
     private var tableView : UITableView?
     private var lotteries = Array<Array<Int>>()
     private var getting = false
+    private let hostName = "lottery.sunmin.me"
+//    private let hostName = "127.0.0.1:5000"
     
     private let type : LotteryType
     private let algorithm : LotteryAlgorithm
     // 如果是0则由本界面随机，否则是指定个数
     private var count = 0
-    private var preferBlues = Array<Int>()
     private var preferReds = Array<Int>()
+    private var preferBlues = Array<Int>()
     
     
-    init(type : LotteryType, algorithm : LotteryAlgorithm, count : Int, preferBlues : [Int], preferReds : [Int]) {
+    init(type : LotteryType, algorithm : LotteryAlgorithm, count : Int, preferReds : [Int], preferBlues : [Int]) {
         self.type = type
         self.algorithm = algorithm
         self.count = count
-        self.preferBlues = preferBlues
         self.preferReds = preferReds
+        self.preferBlues = preferBlues
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -63,7 +65,7 @@ class ResultViewController: UIViewController {
         tableView?.dataSource = self
         self.view.addSubview(tableView!)
         tableView?.snp_makeConstraints{ make in
-            make.top.equalTo(l.snp_bottom).offset(20)
+            make.top.equalTo(l.snp_bottom).offset(10)
             make.left.equalTo(0)
             make.right.equalTo(0)
             make.bottom.equalTo(self.view)
@@ -92,10 +94,10 @@ class ResultViewController: UIViewController {
         if thisCount == 0 {
             thisCount = Int(arc4random()%4) + 1
         }
-        let preferblues=[1]
-        let preferreds=[2]
-        
-        let s = NSURLSession.sharedSession().dataTaskWithURL(NSURL(string: "http://lottery.sunmin.me/lottery?type=\(type.rawValue)&algorithm=\(algorithm.rawValue)&count=\(thisCount)&preferblues=\(preferblues)preferreds=\(preferreds)")!, completionHandler: { (data, response, error) -> Void in
+        let reds = preferReds.map{"\($0)"}.joinWithSeparator(",")
+        let blues = preferBlues.map{"\($0)"}.joinWithSeparator(",")
+        let urlString = "http://\(hostName)/lottery?type=\(type.rawValue)&algorithm=\(algorithm.rawValue)&count=\(thisCount)&preferreds=\(reds)&preferblues=\(blues)"
+        let s = NSURLSession.sharedSession().dataTaskWithURL(NSURL(string: urlString)!, completionHandler: { (data, response, error) -> Void in
             self.getting = false
             sm_dispatch_execute_in_main_queue_after(0.0, { () -> Void in
                 self.view.hideWait()

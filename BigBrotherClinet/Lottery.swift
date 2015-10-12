@@ -9,16 +9,16 @@
 import Foundation
 
 enum LotteryType : String {
-    case SuperLotto = "superlotter"
-    case WelfareLotto = "welfarelotto"
+    case SuperLotto = "superlotto"
+    case WelfareLottery = "welfarelottery"
     
     func blueBallCount() -> Int {
         switch self {
         case SuperLotto:
-            return 5
+            return 2
             
-        case .WelfareLotto:
-            return 6
+        case .WelfareLottery:
+            return 1
         }
     }
     
@@ -26,10 +26,10 @@ enum LotteryType : String {
     func redBallCount() -> Int {
         switch self {
         case SuperLotto:
-            return 2
+            return 5
             
-        case .WelfareLotto:
-            return 1
+        case .WelfareLottery:
+            return 6
         }
     }
     
@@ -42,10 +42,10 @@ enum LotteryType : String {
     func blueBallMaxValue() -> Int {
         switch self {
         case SuperLotto:
-            return 35
+            return 12
             
-        case .WelfareLotto:
-            return 33
+        case .WelfareLottery:
+            return 16
         }
     }
     
@@ -58,10 +58,10 @@ enum LotteryType : String {
     func redBallMaxValue() -> Int {
         switch self {
         case SuperLotto:
-            return 12
+            return 35
             
-        case .WelfareLotto:
-            return 16
+        case .WelfareLottery:
+            return 33
         }
     }
     
